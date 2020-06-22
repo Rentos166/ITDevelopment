@@ -8,6 +8,7 @@ namespace ITDevelopment_Project
 {
     static class Program
     {
+        public static ITDevelopmentEntities itDb = new ITDevelopmentEntities();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +17,7 @@ namespace ITDevelopment_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormClients());
         }
     }
 }
