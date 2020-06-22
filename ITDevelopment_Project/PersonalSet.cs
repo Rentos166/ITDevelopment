@@ -17,6 +17,7 @@ namespace ITDevelopment_Project
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PersonalSet()
         {
+            this.CustomSet = new HashSet<CustomSet>();
             this.Departament = new HashSet<Departament>();
         }
     
@@ -29,6 +30,8 @@ namespace ITDevelopment_Project
         public string Phone { get; set; }
         public string Email { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomSet> CustomSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Departament> Departament { get; set; }
         public virtual Departament Departament1 { get; set; }

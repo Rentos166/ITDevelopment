@@ -25,7 +25,9 @@ namespace ITDevelopment_Project
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AttedenceSet> AttedenceSet { get; set; }
         public virtual DbSet<ClientSet> ClientSet { get; set; }
+        public virtual DbSet<CustomSet> CustomSet { get; set; }
         public virtual DbSet<Departament> Departament { get; set; }
         public virtual DbSet<PersonalSet> PersonalSet { get; set; }
     }

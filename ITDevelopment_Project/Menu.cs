@@ -34,5 +34,11 @@ namespace ITDevelopment_Project
             Form formDepartment = new FormDepartament();
             formDepartment.Show();
         }
+
+        private void buttonOpenAttendance_Click(object sender, EventArgs e)
+        {
+            Form formAttendance = new FormAttendance();
+            formAttendance.Show();
+        }
     }
 }

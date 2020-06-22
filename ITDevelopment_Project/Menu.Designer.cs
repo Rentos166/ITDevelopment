@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonOpenClients = new System.Windows.Forms.Button();
             this.buttonOpenPersonal = new System.Windows.Forms.Button();
             this.buttonOpenDepartment = new System.Windows.Forms.Button();
@@ -36,18 +35,9 @@
             this.buttonOpenCustom = new System.Windows.Forms.Button();
             this.buttonOpenSeminars = new System.Windows.Forms.Button();
             this.buttonOpenFinance = new System.Windows.Forms.Button();
+            this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBoxLogo
-            // 
-            this.pictureBoxLogo.Image = global::ITDevelopment_Project.Properties.Resources._1485088570logo1_big;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(5, 0);
-            this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(254, 112);
-            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxLogo.TabIndex = 43;
-            this.pictureBoxLogo.TabStop = false;
             // 
             // buttonOpenClients
             // 
@@ -87,6 +77,7 @@
             this.buttonOpenAttendance.TabIndex = 47;
             this.buttonOpenAttendance.Text = "Услуги";
             this.buttonOpenAttendance.UseVisualStyleBackColor = true;
+            this.buttonOpenAttendance.Click += new System.EventHandler(this.buttonOpenAttendance_Click);
             // 
             // buttonOpenCustom
             // 
@@ -114,6 +105,16 @@
             this.buttonOpenFinance.TabIndex = 50;
             this.buttonOpenFinance.Text = "Доходы/расходы";
             this.buttonOpenFinance.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxLogo
+            // 
+            this.pictureBoxLogo.Image = global::ITDevelopment_Project.Properties.Resources._1485088570logo1_big;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(5, 0);
+            this.pictureBoxLogo.Name = "pictureBoxLogo";
+            this.pictureBoxLogo.Size = new System.Drawing.Size(254, 112);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLogo.TabIndex = 43;
+            this.pictureBoxLogo.TabStop = false;
             // 
             // Menu
             // 
