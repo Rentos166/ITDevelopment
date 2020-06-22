@@ -4,8 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bef0d831907c4515824d3bdff2e8d4c1" Name="Diagram1">
-        <EntityTypeShape EntityType="ITDevelopmentModel.ClientSet" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="1aa981e0c06842d295f7bd636fd1edda" Name="Diagram1">
+        <EntityTypeShape EntityType="ITDevelopmentModel.ClientSet" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDevelopmentModel.Departament" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDevelopmentModel.PersonalSet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ITDevelopmentModel.FK_Departament_PersonalSet" ManuallyRouted="false" />
+        <AssociationConnector Association="ITDevelopmentModel.FK_PersonalSet_PersonalSet" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

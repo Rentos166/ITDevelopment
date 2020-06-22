@@ -58,11 +58,32 @@
     <Compile Include="ClientSet.cs">
       <DependentUpon>ModelIT.tt</DependentUpon>
     </Compile>
+    <Compile Include="Departament.cs">
+      <DependentUpon>ModelIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormClient.Designer.cs">
       <DependentUpon>FormClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDepartament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDepartament.Designer.cs">
+      <DependentUpon>FormDepartament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPersonal.Designer.cs">
+      <DependentUpon>FormPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelIT.Context.cs">
       <AutoGen>True</AutoGen>
@@ -79,10 +100,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelIT.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PersonalSet.cs">
+      <DependentUpon>ModelIT.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDepartament.resx">
+      <DependentUpon>FormDepartament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPersonal.resx">
+      <DependentUpon>FormPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,20 +149,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\1485088570logo1_big.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelIT.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelIT.Context.cs</LastGenOutput>
       <DependentUpon>ModelIT.edmx</DependentUpon>
+      <LastGenOutput>ModelIT.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ModelIT.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelIT.edmx</DependentUpon>
       <LastGenOutput>ModelIT.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\1485088570logo1_big.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

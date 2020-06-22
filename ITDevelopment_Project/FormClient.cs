@@ -37,6 +37,7 @@ namespace ITDevelopment_Project
                 //добавляем элементы в listView для отображения
                 listViewClient.Items.Add(item);
             }
+            listViewClient.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
         public FormClients()
         {
@@ -64,7 +65,7 @@ namespace ITDevelopment_Project
                 clientsSet.Email = textBoxEmail.Text;  
                 //Добавляем в таблицу ClientSet нового клиента clientSet
                 Program.itDb.ClientSet.Add(clientsSet);
-                //Сохраняем изменения в модели zokiDb (экземпляр которой был создан ранее)
+                //Сохраняем изменения в модели itDb (экземпляр которой был создан ранее)
                 Program.itDb.SaveChanges();
                 ShowClient();
             }
@@ -87,7 +88,7 @@ namespace ITDevelopment_Project
                     clientsSet.CompanyName = textBoxCompany.Text;
                     clientsSet.Phone = textBoxPhone.Text;
                     clientsSet.Email = textBoxEmail.Text; 
-                    //Сохраняем изменения в модели zokiDb (экземпляр которой был создан ранее)
+                    //Сохраняем изменения в модели itDb (экземпляр которой был создан ранее)
                     Program.itDb.SaveChanges();
                     ShowClient();
                 }

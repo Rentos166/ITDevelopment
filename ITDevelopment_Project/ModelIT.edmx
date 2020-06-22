@@ -17,8 +17,65 @@
           <Property Name="Phone" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Departament">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Manager" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdPersonal" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonalSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdDepartament" Type="int" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Departament_PersonalSet">
+          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="0..1" />
+          <End Role="Departament" Type="Self.Departament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departament">
+              <PropertyRef Name="IdPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalSet_PersonalSet">
+          <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
+          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departament">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalSet">
+              <PropertyRef Name="IdDepartament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище ITDevelopmentModelContainer">
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalSet" EntityType="Self.PersonalSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Departament_PersonalSet" Association="Self.FK_Departament_PersonalSet">
+            <End Role="PersonalSet" EntitySet="PersonalSet" />
+            <End Role="Departament" EntitySet="Departament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalSet_PersonalSet" Association="Self.FK_PersonalSet_PersonalSet">
+            <End Role="Departament" EntitySet="Departament" />
+            <End Role="PersonalSet" EntitySet="PersonalSet" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -37,8 +94,69 @@
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Departament">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdPersonal" Type="Int32" />
+          <NavigationProperty Name="PersonalSet" Relationship="Self.FK_Departament_PersonalSet" FromRole="Departament" ToRole="PersonalSet" />
+          <NavigationProperty Name="PersonalSet1" Relationship="Self.FK_PersonalSet_PersonalSet" FromRole="Departament" ToRole="PersonalSet" />
+        </EntityType>
+        <EntityType Name="PersonalSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdDepartament" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Departament" Relationship="Self.FK_Departament_PersonalSet" FromRole="PersonalSet" ToRole="Departament" />
+          <NavigationProperty Name="Departament1" Relationship="Self.FK_PersonalSet_PersonalSet" FromRole="PersonalSet" ToRole="Departament" />
+        </EntityType>
+        <Association Name="FK_Departament_PersonalSet">
+          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="0..1" />
+          <End Role="Departament" Type="Self.Departament" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departament">
+              <PropertyRef Name="IdPersonal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonalSet_PersonalSet">
+          <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
+          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departament">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonalSet">
+              <PropertyRef Name="IdDepartament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ITDevelopmentEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
+          <EntitySet Name="Departament" EntityType="Self.Departament" />
+          <EntitySet Name="PersonalSet" EntityType="Self.PersonalSet" />
+          <AssociationSet Name="FK_Departament_PersonalSet" Association="Self.FK_Departament_PersonalSet">
+            <End Role="PersonalSet" EntitySet="PersonalSet" />
+            <End Role="Departament" EntitySet="Departament" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonalSet_PersonalSet" Association="Self.FK_PersonalSet_PersonalSet">
+            <End Role="Departament" EntitySet="Departament" />
+            <End Role="PersonalSet" EntitySet="PersonalSet" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -54,6 +172,31 @@
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departament">
+            <EntityTypeMapping TypeName="ITDevelopmentModel.Departament">
+              <MappingFragment StoreEntitySet="Departament">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalSet">
+            <EntityTypeMapping TypeName="ITDevelopmentModel.PersonalSet">
+              <MappingFragment StoreEntitySet="PersonalSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>

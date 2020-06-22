@@ -17,7 +17,7 @@ namespace ITDevelopment_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormClients());
+            Application.Run(new Menu());
         }
     }
 }

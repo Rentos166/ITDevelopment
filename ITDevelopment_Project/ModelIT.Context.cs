@@ -26,5 +26,7 @@ namespace ITDevelopment_Project
         }
     
         public virtual DbSet<ClientSet> ClientSet { get; set; }
+        public virtual DbSet<Departament> Departament { get; set; }
+        public virtual DbSet<PersonalSet> PersonalSet { get; set; }
     }
 }
