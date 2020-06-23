@@ -16,12 +16,13 @@ namespace ITDevelopment_Project
     {
         public int Id { get; set; }
         public int IdClient { get; set; }
-        public int IdPersonal { get; set; }
+        public int IdDepartament { get; set; }
         public int IdAttedence { get; set; }
-        public System.DateTime Date { get; set; }
+        public string Status { get; set; }
+        public System.DateTime DeadLine { get; set; }
     
         public virtual AttedenceSet AttedenceSet { get; set; }
         public virtual ClientSet ClientSet { get; set; }
-        public virtual PersonalSet PersonalSet { get; set; }
+        public virtual Departament Departament { get; set; }
     }
 }

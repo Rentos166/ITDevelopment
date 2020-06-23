@@ -11,7 +11,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Price" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="Guarantee" Type="nvarchar(max)" />
           <Property Name="IdDepartment" Type="int" Nullable="false" />
         </EntityType>
@@ -33,9 +33,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdClient" Type="int" Nullable="false" />
-          <Property Name="IdPersonal" Type="int" Nullable="false" />
+          <Property Name="IdDepartament" Type="int" Nullable="false" />
           <Property Name="IdAttedence" Type="int" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DeadLine" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -96,15 +97,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CustomSet_PersonalSet">
-          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="1" />
+        <Association Name="FK_CustomSet_Departament">
+          <End Role="Departament" Type="Self.Departament" Multiplicity="1" />
           <End Role="CustomSet" Type="Self.CustomSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PersonalSet">
+            <Principal Role="Departament">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CustomSet">
-              <PropertyRef Name="IdPersonal" />
+              <PropertyRef Name="IdDepartament" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -150,8 +151,8 @@
             <End Role="ClientSet" EntitySet="ClientSet" />
             <End Role="CustomSet" EntitySet="CustomSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_CustomSet_PersonalSet" Association="Self.FK_CustomSet_PersonalSet">
-            <End Role="PersonalSet" EntitySet="PersonalSet" />
+          <AssociationSet Name="FK_CustomSet_Departament" Association="Self.FK_CustomSet_Departament">
+            <End Role="Departament" EntitySet="Departament" />
             <End Role="CustomSet" EntitySet="CustomSet" />
           </AssociationSet>
           <AssociationSet Name="FK_Departament_PersonalSet" Association="Self.FK_Departament_PersonalSet">
@@ -174,7 +175,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Guarantee" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdDepartment" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_AttedenceSet_AttedenceSet" FromRole="AttedenceSet" ToRole="Departament" />
@@ -199,12 +200,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdClient" Type="Int32" Nullable="false" />
-          <Property Name="IdPersonal" Type="Int32" Nullable="false" />
+          <Property Name="IdDepartament" Type="Int32" Nullable="false" />
           <Property Name="IdAttedence" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeadLine" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="AttedenceSet" Relationship="Self.FK_CustomSet_AttedenceSet" FromRole="CustomSet" ToRole="AttedenceSet" />
           <NavigationProperty Name="ClientSet" Relationship="Self.FK_CustomSet_ClientSet" FromRole="CustomSet" ToRole="ClientSet" />
-          <NavigationProperty Name="PersonalSet" Relationship="Self.FK_CustomSet_PersonalSet" FromRole="CustomSet" ToRole="PersonalSet" />
+          <NavigationProperty Name="Departament" Relationship="Self.FK_CustomSet_Departament" FromRole="CustomSet" ToRole="Departament" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -216,6 +218,7 @@
           <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdPersonal" Type="Int32" />
           <NavigationProperty Name="AttedenceSet" Relationship="Self.FK_AttedenceSet_AttedenceSet" FromRole="Departament" ToRole="AttedenceSet" />
+          <NavigationProperty Name="CustomSet" Relationship="Self.FK_CustomSet_Departament" FromRole="Departament" ToRole="CustomSet" />
           <NavigationProperty Name="PersonalSet" Relationship="Self.FK_Departament_PersonalSet" FromRole="Departament" ToRole="PersonalSet" />
           <NavigationProperty Name="PersonalSet1" Relationship="Self.FK_PersonalSet_PersonalSet" FromRole="Departament" ToRole="PersonalSet" />
         </EntityType>
@@ -231,7 +234,6 @@
           <Property Name="IdDepartament" Type="Int32" />
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CustomSet" Relationship="Self.FK_CustomSet_PersonalSet" FromRole="PersonalSet" ToRole="CustomSet" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_Departament_PersonalSet" FromRole="PersonalSet" ToRole="Departament" />
           <NavigationProperty Name="Departament1" Relationship="Self.FK_PersonalSet_PersonalSet" FromRole="PersonalSet" ToRole="Departament" />
         </EntityType>
@@ -271,15 +273,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CustomSet_PersonalSet">
-          <End Role="PersonalSet" Type="Self.PersonalSet" Multiplicity="1" />
+        <Association Name="FK_CustomSet_Departament">
+          <End Role="Departament" Type="Self.Departament" Multiplicity="1" />
           <End Role="CustomSet" Type="Self.CustomSet" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PersonalSet">
+            <Principal Role="Departament">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CustomSet">
-              <PropertyRef Name="IdPersonal" />
+              <PropertyRef Name="IdDepartament" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -325,8 +327,8 @@
             <End Role="ClientSet" EntitySet="ClientSet" />
             <End Role="CustomSet" EntitySet="CustomSet" />
           </AssociationSet>
-          <AssociationSet Name="FK_CustomSet_PersonalSet" Association="Self.FK_CustomSet_PersonalSet">
-            <End Role="PersonalSet" EntitySet="PersonalSet" />
+          <AssociationSet Name="FK_CustomSet_Departament" Association="Self.FK_CustomSet_Departament">
+            <End Role="Departament" EntitySet="Departament" />
             <End Role="CustomSet" EntitySet="CustomSet" />
           </AssociationSet>
           <AssociationSet Name="FK_Departament_PersonalSet" Association="Self.FK_Departament_PersonalSet">
@@ -373,9 +375,10 @@
               <MappingFragment StoreEntitySet="CustomSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-                <ScalarProperty Name="IdPersonal" ColumnName="IdPersonal" />
+                <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
                 <ScalarProperty Name="IdAttedence" ColumnName="IdAttedence" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DeadLine" ColumnName="DeadLine" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

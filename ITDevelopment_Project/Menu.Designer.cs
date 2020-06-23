@@ -87,6 +87,7 @@
             this.buttonOpenCustom.TabIndex = 48;
             this.buttonOpenCustom.Text = "Заказы";
             this.buttonOpenCustom.UseVisualStyleBackColor = true;
+            this.buttonOpenCustom.Click += new System.EventHandler(this.buttonOpenCustom_Click);
             // 
             // buttonOpenSeminars
             // 

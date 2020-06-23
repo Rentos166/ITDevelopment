@@ -22,7 +22,7 @@ namespace ITDevelopment_Project
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Price { get; set; }
+        public int Price { get; set; }
         public string Guarantee { get; set; }
         public int IdDepartment { get; set; }
     

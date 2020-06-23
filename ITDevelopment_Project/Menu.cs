@@ -40,5 +40,11 @@ namespace ITDevelopment_Project
             Form formAttendance = new FormAttendance();
             formAttendance.Show();
         }
+
+        private void buttonOpenCustom_Click(object sender, EventArgs e)
+        {
+            Form formCustoms = new FormCustoms();
+            formCustoms.Show();
+        }
     }
 }

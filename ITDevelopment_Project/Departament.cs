@@ -18,6 +18,7 @@ namespace ITDevelopment_Project
         public Departament()
         {
             this.AttedenceSet = new HashSet<AttedenceSet>();
+            this.CustomSet = new HashSet<CustomSet>();
             this.PersonalSet1 = new HashSet<PersonalSet>();
         }
     
@@ -29,6 +30,8 @@ namespace ITDevelopment_Project
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttedenceSet> AttedenceSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomSet> CustomSet { get; set; }
         public virtual PersonalSet PersonalSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PersonalSet> PersonalSet1 { get; set; }

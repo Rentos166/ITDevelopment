@@ -57,32 +57,40 @@ namespace ITDevelopment_Project
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (textBoxNameCompany.Text != "")
-            {
-                Departament departmentsSet = new Departament();
-                departmentsSet.Name = textBoxNameCompany.Text;
-                departmentsSet.Manager = textBoxManager.Text;
-                Program.itDb.Departament.Add(departmentsSet);
-                Program.itDb.SaveChanges();
-                ShowDepartament();
-            }
-            else MessageBox.Show("Заполните название отдела!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            if (listViewDepartament.SelectedItems.Count == 1)
+            try
             {
                 if (textBoxNameCompany.Text != "")
                 {
-                    Departament departmentsSet = listViewDepartament.SelectedItems[0].Tag as Departament;
+                    Departament departmentsSet = new Departament();
                     departmentsSet.Name = textBoxNameCompany.Text;
                     departmentsSet.Manager = textBoxManager.Text;
+                    Program.itDb.Departament.Add(departmentsSet);
                     Program.itDb.SaveChanges();
                     ShowDepartament();
                 }
                 else MessageBox.Show("Заполните название отдела!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewDepartament.SelectedItems.Count == 1)
+                {
+                    if (textBoxNameCompany.Text != "")
+                    {
+                        Departament departmentsSet = listViewDepartament.SelectedItems[0].Tag as Departament;
+                        departmentsSet.Name = textBoxNameCompany.Text;
+                        departmentsSet.Manager = textBoxManager.Text;
+                        Program.itDb.SaveChanges();
+                        ShowDepartament();
+                    }
+                    else MessageBox.Show("Заполните название отдела!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void listViewDepartament_SelectedIndexChanged(object sender, EventArgs e)

@@ -140,6 +140,7 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(130, 20);
             this.textBoxPrice.TabIndex = 48;
+            this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPrice_KeyPress);
             // 
             // labelPrice
             // 

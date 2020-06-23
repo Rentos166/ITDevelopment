@@ -30,7 +30,7 @@ namespace ITDevelopment_Project
                     clientsSet.LastName,
                     clientsSet.CompanyName,
                     clientsSet.Phone,
-                    clientsSet.Email,
+                    clientsSet.Email
                 });
                 //указываем по какому тегу будем брать элементы
                 item.Tag = clientsSet;

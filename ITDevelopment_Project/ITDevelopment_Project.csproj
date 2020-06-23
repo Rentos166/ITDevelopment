@@ -79,6 +79,12 @@
     <Compile Include="FormClient.Designer.cs">
       <DependentUpon>FormClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCustoms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCustoms.Designer.cs">
+      <DependentUpon>FormCustoms.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDepartament.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCustoms.resx">
+      <DependentUpon>FormCustoms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDepartament.resx">
       <DependentUpon>FormDepartament.cs</DependentUpon>

@@ -22,9 +22,8 @@ namespace ITDevelopment_Project
                         attedenceSet.Id.ToString(),
                         attedenceSet.Name,
                         attedenceSet.Departament.Name,
-                        //Не забудь поменять тип на INT
-                        attedenceSet.Price+" руб.",
-                        attedenceSet.Guarantee,
+                        attedenceSet.Price.ToString()+" руб.",
+                        attedenceSet.Guarantee
                     });
                 item.Tag = attedenceSet;
                 listViewAttendance.Items.Add(item);
@@ -54,36 +53,44 @@ namespace ITDevelopment_Project
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (textBoxName.Text != "" && textBoxPrice.Text != "" && comboBoxDepartament.SelectedItem != null)
-            {
-                AttedenceSet attedenceSet = new AttedenceSet();
-                attedenceSet.Name = textBoxName.Text;
-                attedenceSet.Price = textBoxPrice.Text;
-                attedenceSet.Guarantee = textBoxGuarantee.Text;
-                attedenceSet.IdDepartment = Convert.ToInt32(comboBoxDepartament.SelectedItem.ToString().Split('.')[0]);
-                Program.itDb.AttedenceSet.Add(attedenceSet);
-                Program.itDb.SaveChanges();
-                ShowAttendance();
-            }
-            else MessageBox.Show("Поля не заполнены! Проверьте и повторите попытку.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            if (listViewAttendance.SelectedItems.Count == 1)
+            try
             {
                 if (textBoxName.Text != "" && textBoxPrice.Text != "" && comboBoxDepartament.SelectedItem != null)
                 {
-                    AttedenceSet attedenceSet = listViewAttendance.SelectedItems[0].Tag as AttedenceSet;
+                    AttedenceSet attedenceSet = new AttedenceSet();
                     attedenceSet.Name = textBoxName.Text;
-                    attedenceSet.Price = textBoxPrice.Text;
+                    attedenceSet.Price = Convert.ToInt32(textBoxPrice.Text);
                     attedenceSet.Guarantee = textBoxGuarantee.Text;
                     attedenceSet.IdDepartment = Convert.ToInt32(comboBoxDepartament.SelectedItem.ToString().Split('.')[0]);
+                    Program.itDb.AttedenceSet.Add(attedenceSet);
                     Program.itDb.SaveChanges();
                     ShowAttendance();
                 }
                 else MessageBox.Show("Поля не заполнены! Проверьте и повторите попытку.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewAttendance.SelectedItems.Count == 1)
+                {
+                    if (textBoxName.Text != "" && textBoxPrice.Text != "" && comboBoxDepartament.SelectedItem != null)
+                    {
+                        AttedenceSet attedenceSet = listViewAttendance.SelectedItems[0].Tag as AttedenceSet;
+                        attedenceSet.Name = textBoxName.Text;
+                        attedenceSet.Price = Convert.ToInt32(textBoxPrice.Text);
+                        attedenceSet.Guarantee = textBoxGuarantee.Text;
+                        attedenceSet.IdDepartment = Convert.ToInt32(comboBoxDepartament.SelectedItem.ToString().Split('.')[0]);
+                        Program.itDb.SaveChanges();
+                        ShowAttendance();
+                    }
+                    else MessageBox.Show("Поля не заполнены! Проверьте и повторите попытку.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void listViewAttendance_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,7 +99,7 @@ namespace ITDevelopment_Project
             {
                 AttedenceSet attedenceSet = listViewAttendance.SelectedItems[0].Tag as AttedenceSet;
                 textBoxName.Text = attedenceSet.Name;
-                textBoxPrice.Text = attedenceSet.Price;
+                textBoxPrice.Text = attedenceSet.Price.ToString();
                 textBoxGuarantee.Text = attedenceSet.Guarantee;
                 comboBoxDepartament.SelectedIndex = comboBoxDepartament.FindString(attedenceSet.IdDepartment.ToString());
             }
@@ -122,6 +129,15 @@ namespace ITDevelopment_Project
                 comboBoxDepartament.SelectedItem = null;
             }
             catch { MessageBox.Show("Невозможно удалить, эта запись используется!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+        }
+
+        private void textBoxPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && number != 8) //цифры, клавиша BackSpace 
+            {
+                e.Handled = true;
+            }
         }
     }
 }
