@@ -15,6 +15,15 @@ namespace ITDevelopment_Project
         public Menu()
         {
             InitializeComponent();
+            if(FormAuthorization.users.type!="Директор")
+            {
+                buttonOpenPersonal.Enabled = false;
+            }
+            else
+            {
+                buttonOpenPersonal.Enabled = true;
+            }
+            labelHello.Text = "Приветствую, " + FormAuthorization.users.type +", " + FormAuthorization.users.login;
         }
 
         private void buttonOpenClients_Click(object sender, EventArgs e)
@@ -51,6 +60,30 @@ namespace ITDevelopment_Project
         {
             Form formSeminars = new FormSeminars();
             formSeminars.Show();
+        }
+
+        private void buttonOpenFinance_Click(object sender, EventArgs e)
+        {
+            Form formFinance = new FormFinance();
+            formFinance.Show();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            
+            Form formAuthorization = new FormAuthorization();
+            formAuthorization.Show();
+            Close();
+        }
+
+        private void buttonExit_MouseMove(object sender, MouseEventArgs e)
+        {
+            buttonExit.BackColor = Color.MediumSpringGreen;
+        }
+
+        private void buttonExit_MouseLeave(object sender, EventArgs e)
+        {
+            buttonExit.BackColor = Color.DarkGreen;
         }
     }
 }

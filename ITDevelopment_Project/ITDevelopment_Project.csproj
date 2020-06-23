@@ -76,6 +76,12 @@
     <Compile Include="FormAttendance.Designer.cs">
       <DependentUpon>FormAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAuthorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAuthorization.Designer.cs">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,11 +100,23 @@
     <Compile Include="FormDepartament.Designer.cs">
       <DependentUpon>FormDepartament.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFinance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFinance.Designer.cs">
+      <DependentUpon>FormFinance.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPersonal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPersonal.Designer.cs">
       <DependentUpon>FormPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSeminars.cs">
       <SubType>Form</SubType>
@@ -141,6 +159,9 @@
     <EmbeddedResource Include="FormAttendance.resx">
       <DependentUpon>FormAttendance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAuthorization.resx">
+      <DependentUpon>FormAuthorization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,8 +171,14 @@
     <EmbeddedResource Include="FormDepartament.resx">
       <DependentUpon>FormDepartament.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFinance.resx">
+      <DependentUpon>FormFinance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPersonal.resx">
       <DependentUpon>FormPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistration.resx">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSeminars.resx">
       <DependentUpon>FormSeminars.cs</DependentUpon>

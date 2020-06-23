@@ -55,7 +55,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Gain" Type="int" Nullable="false" />
           <Property Name="Costs" Type="int" Nullable="false" />
-          <Property Name="Date" Type="date" />
+          <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Profit" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonalSet">
@@ -262,7 +262,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Gain" Type="Int32" Nullable="false" />
           <Property Name="Costs" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Profit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="PersonalSet">

@@ -23,7 +23,7 @@ namespace ITDevelopment_Project
                     seminarsSet.Name,
                     "г. " + seminarsSet.Address_City+", " + "ул. " + seminarsSet.Address_Street+", "+
                     "д. " + seminarsSet.Address_House,
-                    seminarsSet.Date.ToString(("dd/MM/yyyy"))
+                    seminarsSet.Date.ToString("dd/MM/yyyy")
                 });
                 item.Tag = seminarsSet;
                 listViewSeminar.Items.Add(item);

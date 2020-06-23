@@ -17,7 +17,7 @@ namespace ITDevelopment_Project
         public int Id { get; set; }
         public int Gain { get; set; }
         public int Costs { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
+        public System.DateTime Date { get; set; }
         public string Profit { get; set; }
     }
 }
