@@ -97,6 +97,7 @@
             this.buttonOpenSeminars.TabIndex = 49;
             this.buttonOpenSeminars.Text = "Семинары";
             this.buttonOpenSeminars.UseVisualStyleBackColor = true;
+            this.buttonOpenSeminars.Click += new System.EventHandler(this.buttonOpenSeminars_Click);
             // 
             // buttonOpenFinance
             // 

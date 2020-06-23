@@ -48,6 +48,16 @@
           <Property Name="Manager" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IdPersonal" Type="int" />
         </EntityType>
+        <EntityType Name="FinanceSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gain" Type="int" Nullable="false" />
+          <Property Name="Costs" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Profit" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="PersonalSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -60,6 +70,26 @@
           <Property Name="IdDepartament" Type="int" />
           <Property Name="Phone" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SeminarsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address_City" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address_Street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address_House" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_AttedenceSet_AttedenceSet">
           <End Role="Departament" Type="Self.Departament" Multiplicity="1" />
@@ -138,7 +168,10 @@
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomSet" EntityType="Self.CustomSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departament" EntityType="Self.Departament" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinanceSet" EntityType="Self.FinanceSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PersonalSet" EntityType="Self.PersonalSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeminarsSet" EntityType="Self.SeminarsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AttedenceSet_AttedenceSet" Association="Self.FK_AttedenceSet_AttedenceSet">
             <End Role="Departament" EntitySet="Departament" />
             <End Role="AttedenceSet" EntitySet="AttedenceSet" />
@@ -222,6 +255,16 @@
           <NavigationProperty Name="PersonalSet" Relationship="Self.FK_Departament_PersonalSet" FromRole="Departament" ToRole="PersonalSet" />
           <NavigationProperty Name="PersonalSet1" Relationship="Self.FK_PersonalSet_PersonalSet" FromRole="Departament" ToRole="PersonalSet" />
         </EntityType>
+        <EntityType Name="FinanceSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gain" Type="Int32" Nullable="false" />
+          <Property Name="Costs" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Profit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="PersonalSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -236,6 +279,26 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_Departament_PersonalSet" FromRole="PersonalSet" ToRole="Departament" />
           <NavigationProperty Name="Departament1" Relationship="Self.FK_PersonalSet_PersonalSet" FromRole="PersonalSet" ToRole="Departament" />
+        </EntityType>
+        <EntityType Name="SeminarsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address_City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address_Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address_House" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <Association Name="FK_AttedenceSet_AttedenceSet">
           <End Role="Departament" Type="Self.Departament" Multiplicity="1" />
@@ -314,7 +377,10 @@
           <EntitySet Name="ClientSet" EntityType="Self.ClientSet" />
           <EntitySet Name="CustomSet" EntityType="Self.CustomSet" />
           <EntitySet Name="Departament" EntityType="Self.Departament" />
+          <EntitySet Name="FinanceSet" EntityType="Self.FinanceSet" />
           <EntitySet Name="PersonalSet" EntityType="Self.PersonalSet" />
+          <EntitySet Name="SeminarsSet" EntityType="Self.SeminarsSet" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_AttedenceSet_AttedenceSet" Association="Self.FK_AttedenceSet_AttedenceSet">
             <End Role="Departament" EntitySet="Departament" />
             <End Role="AttedenceSet" EntitySet="AttedenceSet" />
@@ -393,6 +459,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FinanceSet">
+            <EntityTypeMapping TypeName="ITDevelopmentModel.FinanceSet">
+              <MappingFragment StoreEntitySet="FinanceSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Gain" ColumnName="Gain" />
+                <ScalarProperty Name="Costs" ColumnName="Costs" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Profit" ColumnName="Profit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PersonalSet">
             <EntityTypeMapping TypeName="ITDevelopmentModel.PersonalSet">
               <MappingFragment StoreEntitySet="PersonalSet">
@@ -404,6 +481,28 @@
                 <ScalarProperty Name="IdDepartament" ColumnName="IdDepartament" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeminarsSet">
+            <EntityTypeMapping TypeName="ITDevelopmentModel.SeminarsSet">
+              <MappingFragment StoreEntitySet="SeminarsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address_City" ColumnName="Address_City" />
+                <ScalarProperty Name="Address_Street" ColumnName="Address_Street" />
+                <ScalarProperty Name="Address_House" ColumnName="Address_House" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ITDevelopmentModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -46,5 +46,11 @@ namespace ITDevelopment_Project
             Form formCustoms = new FormCustoms();
             formCustoms.Show();
         }
+
+        private void buttonOpenSeminars_Click(object sender, EventArgs e)
+        {
+            Form formSeminars = new FormSeminars();
+            formSeminars.Show();
+        }
     }
 }

@@ -4,12 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0aaf421e10b646ea9b7b4eb25eb43ec8" Name="Diagram1">
+      <Diagram DiagramId="4898b442a6be41b199719171fc1d7052" Name="Diagram1">
         <EntityTypeShape EntityType="ITDevelopmentModel.AttedenceSet" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ITDevelopmentModel.ClientSet" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ITDevelopmentModel.CustomSet" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ITDevelopmentModel.Departament" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDevelopmentModel.FinanceSet" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ITDevelopmentModel.PersonalSet" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDevelopmentModel.SeminarsSet" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ITDevelopmentModel.Users" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="ITDevelopmentModel.FK_AttedenceSet_AttedenceSet" ManuallyRouted="false" />
         <AssociationConnector Association="ITDevelopmentModel.FK_CustomSet_AttedenceSet" ManuallyRouted="false" />
         <AssociationConnector Association="ITDevelopmentModel.FK_CustomSet_ClientSet" ManuallyRouted="false" />
